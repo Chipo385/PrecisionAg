@@ -13,3 +13,7 @@ Of course gen ai is here to code, but creative ideas for new cheap and fast solu
 What that means is that sometimes Agricultural technologies take decades before they becomes affordable. Precision Agtech never reaches the 3rd world smallholder farmers who make up 85% of that farmer segment. 3rd world population is on an explosion course, set to add another billion people in Africa alone. If the conversation is that AI is going to bring abundance, why not in producing more healthy food, efficiently and cheaply, with less waste?
 There is no choice but to come up with ideas that get us to that future. This repo is for those kinds of ideas.
 To learning and building, lets go!!!
+
+## Repository Structure
+- **`Model_1/`**: Initial Precision Agriculture model (`predAg1.Rmd`, `predAg1.ipynb`)
+- **`Model_2/`**, **`Model_3/`**, ...: Future models will be added in numbered sequential directories (`Model_n`).
