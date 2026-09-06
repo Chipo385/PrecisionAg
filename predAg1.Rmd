@@ -1,0 +1,72 @@
+---
+title: "Precision Ag basics"
+output: html_notebook
+---
+
+Load our model
+
+```{r}
+library(randomForest)
+```
+
+Sample Data
+
+```{r}
+#Sample Data for soil moisture, temperature and crop yield
+soil_moisture <- c(34, 42, 37, 35, 31)#percentages
+temperature <- c(23, 26, 25, 21, 18)#celsius
+crop_yield <- c(78, 85, 76, 82, 89)#per hectare
+```
+
+Labels
+
+```{r}
+irrigation <- c(21, 23, 26, 21, 19)#percentage of water
+fertilizer <- c(50, 46, 55, 54, 48)#per kg
+```
+
+Create a dataframe
+
+```{r}
+features <- data.frame(
+  soil_moisture = soil_moisture,
+  temperature = temperature,
+  crop_yield = crop_yield
+)
+```
+
+Training on our data
+
+```{r}
+irrigation_model <- randomForest(irrigation ~., data = features)
+fertilizer_model <- randomForest(fertilizer ~., data = features)
+```
+
+Try it on new data
+
+```{r}
+new_data <- data.frame(
+  soil_moisture = 30,
+  temperature = 27,
+  crop_yield = 75
+)
+```
+
+Predicting irrigation and fertilizer
+
+```{r}
+predicted_irrigation <- predict(irrigation_model, new_data = new_data)
+predicted_fertilizer <- predict(fertilizer_model, new_data = new_data)
+```
+
+Predicted irrigation
+
+```{r}
+cat(sprintf("\nPredicted irrigation:%.2f%%\n", predicted_irrigation))
+```
+
+Predicted Fertilizer
+
+```{r}
+cat(sprintf("\nPredicted fertilizer:%.2f%%\n", predicted_fertilizer))
+```
